@@ -1,0 +1,79 @@
+<!-- ============ HEAD============ -->
+<%- include ('./partials/head.ejs') %>
+
+
+    <!-- ============ HEADER============ -->
+    <%- include ('./partials/header.ejs') %>
+
+        <section id="show" class="show">
+            <div class="container">
+
+                <div class="row gy-4 justify-content-center">
+                    <div class="col-lg-4">
+
+
+                        <% if (equipment.typeEquipment==="pick up truck" ){ %>
+                            <img src="/uploads/pickup_truck.png" alt="pickup_truck" class="img-fluid">
+                            <% } else if (equipment.typeEquipment==="mini excavator" ){ %>
+                                <img src="/uploads/mini_excavator.webp" alt="mini_excavator" class="img-fluid">
+                                <% } else if (equipment.typeEquipment==="excavator" ){ %>
+                                    <img src="/uploads/excavator_large.png" alt="excavator" class="img-fluid">
+                                    <% } else if (equipment.typeEquipment==="scissor lift" ){ %>
+                                        <img src="/uploads/scissor_lift2.jpeg" alt="scissor_lift" class="img-fluid">
+                                        <% } else { %>
+                                            <img src=<%=equipment.typeEquipment %> alt="other type">
+                                            <% } %>
+                                                </a>
+                                                </a>
+
+                    </div>
+                    <div class="col-lg-5 content">
+                        <h1>
+                            <%= equipment.description %>
+                        </h1>
+
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <ul>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Model:</strong> <span>
+                                            <%= equipment.model %>
+                                        </span></li>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Year of the vehicle:</strong> <span>
+                                            <%= equipment.year %>
+                                        </span></li>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Purchase Date:</strong> <span>
+                                            <%= equipment.purchase %>
+                                        </span></li>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Location:</strong> <span>
+                                            <%= equipment.location %>
+                                        </span></li>
+                                    <li><i class="bi bi-chevron-right"></i> <strong>Current User:</strong> <span>
+                                            <%= equipment.currentUser %>
+                                        </span></li>
+
+                                </ul>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="mt-4 d-flex justify-content-center">
+                    <a href="/equipment/<%=equipment._id %>/edit" class="mr-3">
+                        <button class="btn btn-primary update">Update</button>
+                    </a>
+                    <form action="/equipment/<%= equipment._id %>?_method=DELETE" method="POST">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+                  
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ============ FOOTER============ -->
+        <%- include ('./partials/footer.ejs') %>

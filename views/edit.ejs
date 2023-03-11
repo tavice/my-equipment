@@ -1,0 +1,71 @@
+<!-- ============ HEAD ============ -->
+<%- include ('./partials/head.ejs') %>
+
+    <!-- ============ HEADER============ -->
+    <%- include ('./partials/header.ejs') %>
+
+        <div class="container">
+            <h1 class="text-center mb-5 main-title">Edit Status Of: <%=equipment.description%></h1>
+            <form action="/equipment/<%=equipment._id %>?_method=PUT" method="POST">
+                <!-- to use multer Don’t forget the enctype="multipart/form-data" in your form. -->
+
+
+                <div class="form-group">
+                    <label for="yearEquipment">Equipment Year</label>
+                    <input type="text" class="form-control" id="year" aria-describedby="year"
+                        name="year" value="<%=equipment.year%>"  >
+
+                </div>
+                <div class="form-group">
+                    <label for="nameEquipment">Name</label>
+                    <input type="text" class="form-control" id="description"
+                       name="description" value="<%=equipment.description%>" >
+                </div>
+                <div class="form-group">
+                    <label for="model">Model</label>
+                    <input type="text" class="form-control" id="description" 
+                        name="model"  value="<%=equipment.model%>">
+                </div>
+                <div class="form-group">
+                    <label for="purchaseDate">Date of Purchase</label>
+                    <input type="date" class="form-control" id="purchase" 
+                        name="purchase" value="<%=equipment.purchase%>">
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="isDriveable" name="isDriveable">
+                    <label class="form-check-label" for="isDriveable" value="<%=equipment.isDriveable%>">Check Box if equipment is driveable</label>
+                </div>
+                <div class="form-group">
+                    <label for="currentLocation">Location</label>
+                    <input type="text" class="form-control" id="location"
+                         name="location" value="<%=equipment.location%>">
+                </div>
+                <div class="form-group">
+                    <label for="currentUser">Current user</label>
+                    <input type="text" class="form-control" id="currentUser" 
+                        name="currentUser"  value="<%=equipment.currentUser%>">
+                </div>
+
+
+                <div class="form-group">
+                    <label for="equipment">Equipment:</label>
+                    <input type="text" class="form-control" id="typeEquipment" name="typeEquipment" list="equipment-options" value="<%=equipment.typeEquipment%>">
+                    <datalist id="equipment-options">
+                        <option value="pick up truck">
+                        <option value="mini excavator">
+                        <option value="excavator">
+                        <option value="scissor lift">
+                    </datalist>
+                </div>
+
+             
+                <button type="submit" class="btn btn-primary">Update</button>
+            </form>
+        </div>
+
+
+
+
+
+        <!-- ============ FOOTER============ -->
+        <%- include ('./partials/footer.ejs') %>

@@ -1,0 +1,60 @@
+     <!-- ============ HEADER ============ -->
+      <%- include ('./partials/head.ejs') %>
+
+   <!-- ============ HEADER============ -->
+   <%- include ('./partials/header.ejs') %>
+
+ 
+
+      <div class="container">
+		<h1 class="text-center mb-5 main-title">List of Equipment and Vehicles</h1>
+        <h2>Filter Equipment</h2>
+  
+  <input class="form-control" id="myInput" type="text" placeholder="Type Equipment type to find it">
+		<div class="row ">
+            <% equipment.forEach(oneEquipment => { %>
+                
+			<div class="col-md-4 mb-4" class="<%= oneEquipment.typeEquipment %>">
+				<div class="gallery-item" id="equipmentList">
+					<a href="/equipment/<%= oneEquipment._id %>" >
+                        <% if (oneEquipment.typeEquipment === "pick up truck"){  %>
+                            <img src="/uploads/pickup_truck.png" alt="pickup_truck" class="img-fluid">
+                            <% } else if (oneEquipment.typeEquipment === "mini excavator" ){   %>
+                            <img src="/uploads/mini_excavator.webp" alt="mini_excavator" class="img-fluid">
+                            <% } else if (oneEquipment.typeEquipment === "excavator"){   %>
+                            <img src="/uploads/excavator_large.png" alt="excavator" class="img-fluid">
+                            <% } else if (oneEquipment.typeEquipment === "scissor lift"){   %>
+                            <img src="/uploads/scissor_lift2.jpeg" alt="scissor_lift" class="img-fluid">
+                            <% } else  {   %>
+                            <img src=<%= oneEquipment.typeEquipment %> alt="other type">
+                            <% }   %>   
+                    </a>
+				</div>
+			</div>
+            <% }) %>    
+        </div>
+
+<!-- Filter to find equipment faster https://www.w3schools.com/bootstrap/bootstrap_filters.asp-->
+        <script>
+            $(document).ready(function(){
+              $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myDIV *").filter(function() {
+                  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+              });
+            });
+            </script>
+                
+
+
+        
+
+    <!-- ============ FOOTER============ -->
+    <%- include ('./partials/footer.ejs') %>
+
+
+
+
+
+      

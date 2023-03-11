@@ -1,0 +1,94 @@
+<!-- ============ HEAD ============ -->
+<%- include ('./partials/head.ejs') %>
+
+    <!-- ============ HEADER============ -->
+    <%- include ('./partials/header.ejs') %>
+
+        <div class="container">
+            <h1 class="text-center mb-5 main-title">Add New Equipment</h1>
+            <form action="/equipment" method="POST">
+                <!-- to use multer Don’t forget the enctype="multipart/form-data" in your form. -->
+
+
+                <div class="form-group">
+                    <label for="yearEquipment">Equipment Year</label>
+                    <input type="text" class="form-control" id="year" aria-describedby="year"
+                        placeholder="Enter Year Of Equipment" name="year" required>
+
+                </div>
+                <div class="form-group">
+                    <label for="nameEquipment">Name</label>
+                    <input type="text" class="form-control" id="description"
+                        placeholder="Enter Name/ Description of the equipment" name="description" required>
+                </div>
+                <div class="form-group">
+                    <label for="model">Model</label>
+                    <input type="text" class="form-control" id="description" placeholder="Enter Model of the equipment"
+                        name="model" required>
+                </div>
+                <div class="form-group">
+                    <label for="purchaseDate">Date of Purchase</label>
+                    <input type="date" class="form-control" id="purchase" placeholder="Enter Date of Purchase"
+                        name="purchase">
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="isDriveable" name="isDriveable">
+                    <label class="form-check-label" for="isDriveable">Check Box if equipment is driveable</label>
+                </div>
+                <div class="form-group">
+                    <label for="currentLocation">Location</label>
+                    <input type="text" class="form-control" id="location"
+                        placeholder="Enter current location of the equipment" name="location">
+                </div>
+                <div class="form-group">
+                    <label for="currentUser">Current user</label>
+                    <input type="text" class="form-control" id="currentUser" placeholder="Enter current user name"
+                        name="currentUser" required>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="equipment">Equipment:</label>
+                    <input type="text" class="form-control" id="typeEquipment" placeholder="Select equipment" name="typeEquipment"
+                        list="equipment-options" required>
+                    <datalist id="equipment-options">
+                        <option value="pick up truck">
+                        <option value="mini excavator">
+                        <option value="excavator">
+                        <option value="scissor lift">
+                    </datalist>
+                </div>
+
+                <!-- <div class="form-group">
+                <label for="image">Image:</label>
+                <input type="file" class="form-control-file" id="img" name="img" accept="image/*">
+              </div> -->
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+
+
+        <!-- <script>
+        function updateImage() {
+            let equipment = document.getElementById("equipment").value;
+            let image = document.getElementById("equipment-img");
+            if (equipment === "pick up truck") {
+                image.src = "/uploads/pickup_truck.png";
+            } else if (equipment === "mini excavator") {
+                image.src = "/uploads/mini_excavator.webp";
+            } else if (equipment === "excavator") {
+                image.src = "/uploads/excavator_large.png";
+            } else if (equipment === "scissor lift") {
+                image.src = "/uploads/scissor_lift.jpeg";
+            } else {
+                image.src = "";
+            }
+        }
+        </script>
+      -->
+
+
+
+
+        <!-- ============ FOOTER============ -->
+        <%- include ('./partials/footer.ejs') %>

@@ -1,0 +1,88 @@
+
+.container {
+    min-height: 100vh;
+    flex: auto;
+    
+}
+
+h1{
+    text-transform: uppercase;
+}
+
+/* index page */
+.main-title {
+    padding: 5%;
+}
+
+/* Galley in index Page */
+.gallery-item {
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+}
+.gallery-item img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+    transition: transform .2s;
+}
+.gallery-item img:hover {
+    transform: scale(1.1);
+}
+
+  
+
+
+/* Nav Bar */
+
+.navbar {
+    padding: 20px;
+    background-color: orange;
+  }
+
+  .navbar ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    align-items: center;
+  }
+
+  .navbar li {
+    position: relative;
+    align-items: center;
+  }
+
+  .navbar a,
+  .navbar a:focus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0 10px 50px;
+    font-family: var(--font-primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 20px;
+    font-weight: 400;
+    color: black;
+    white-space: nowrap;
+    transition: 0.3s;
+  }
+
+
+
+  .navbar a:hover,
+  .navbar .active,
+  .navbar .active:focus,
+  .navbar li:hover>a {
+    color: red;
+  }
+
+
+  /* Show Container */
+
+  .show {
+    max-width: 100%;
+    padding: 10%;
+  }
