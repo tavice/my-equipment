@@ -69,10 +69,27 @@
                 </div>
 
 
-            </div>
-
-
+            </div> 
+            
         </section>
+<br>
+<br>
+
+        <div id="map"></div>
+        
+        <script>
+            let equipmentLocation = {lat: 37.91577775858977 , lng: -122.3563789967407}
+            let map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 10,
+                center: equipmentLocation,
+            });
+
+            let marker = new google.maps.Marker({
+                position: equipmentLocation,
+                map: map,
+                title: "Equipment Location",
+            });
+        </script>
 
 
         <!-- ============ FOOTER============ -->

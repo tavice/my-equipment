@@ -41,6 +41,14 @@
                          name="location" value="<%=equipment.location%>">
                 </div>
                 <div class="form-group">
+                    <label for="latitude">Latitude</label>
+                    <input type="text" class="form-control" id="latitude" placeholder="Enter latitude" name="location[lat]">
+                </div>
+                <div class="form-group">
+                    <label for="longitude">Longitude</label>
+                    <input type="text" class="form-control" id="longitude" placeholder="Enter longitude" name="location[long]">
+                </div>
+                <div class="form-group">
                     <label for="currentUser">Current user</label>
                     <input type="text" class="form-control" id="currentUser" 
                         name="currentUser"  value="<%=equipment.currentUser%>">

@@ -42,6 +42,7 @@ h1{
   font-weight: bold;
   font-size: 20px;
   color: black;
+ 
 }
 
   
@@ -99,3 +100,13 @@ h1{
     max-width: 100%;
     padding: 10%;
   }
+
+
+  /* Map in the Show Page */
+  #map {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50vh;
+  }
+ 

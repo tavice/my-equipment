@@ -6,13 +6,16 @@ const equipmentSchema = new mongoose.Schema({
         min: 1900, // minimum value
         max: new Date().getFullYear() // maximum value
     },
-    description: {type: String, require: true},
-    model: {type: String, require: true},
+    description: { type: String, require: true },
+    model: { type: String, require: true },
     purchase: String,
-    isDriveable: {type: Boolean, require: true},
+    isDriveable: { type: Boolean, require: true },
     location: String,
-    currentUser: {type: String, require: true},
-    typeEquipment: {type: String, require: true},
+    lat: Number,
+    long: Number,
+
+    currentUser: { type: String, require: true },
+    typeEquipment: { type: String, require: true },
 })
 
 

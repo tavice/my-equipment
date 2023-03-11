@@ -120,16 +120,6 @@ router.put('/:id', (req, res) => {
 router.post('/', (req, res) => {
 
 
-    // Check if a file was uploaded
-    // if (!req.file) {
-    //     res.status(400).send('No file uploaded');
-    //     console.log(upload);
-    //     return;
-    // }
-
-    // console.log(req.file);
-
-    // req.body contains the form data other than the file, making sure we change the value of our form to a boolean
     if (req.body.isDriveable === 'on') {
         req.body.isDriveable = true;
     } else {
@@ -144,6 +134,8 @@ router.post('/', (req, res) => {
         purchase: req.body.purchase,
         isDriveable: req.body.isDriveable,
         location: req.body.location,
+        lat: req.body.lat,
+        long: req.body.long,
         currentUser: req.body.currentUser,
         typeEquipment: req.body.typeEquipment
     };
@@ -154,7 +146,7 @@ router.post('/', (req, res) => {
             res.send(error);
         } else {
             //createdEquipment.save()
-
+            console.log(createdEquipment.location.lat + "AND" + createdEquipment.location.long)
             console.log(createdEquipment);
             // console.log(createdEquipment.img.data.buffer)
 
@@ -168,7 +160,7 @@ router.post('/', (req, res) => {
 //Edit
 
 router.get('/:id/edit',  (req, res)=>{
-    Equipment.findById(req.params.id, (err, foundEquipment)=>{ //find the fruit
+    Equipment.findById(req.params.id, (err, foundEquipment)=>{ 
        if(err){
         console.log(err)
         res.send(err)
