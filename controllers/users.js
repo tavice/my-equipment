@@ -8,39 +8,93 @@ const User = require('../models/users.js')
 
 
 //Sign Up Route
-//get access to the signup.ejs page
+//GET route access to the signup.ejs page
 router.get('/signup', (req, res) => {
-	res.render('users/signup.ejs')
+    res.render('users/signup.ejs')
 })
 
-// POST route when you sign up a user and need to save it to the database
+
+//POST route to create new user
 router.post('/signup', (req, res) => {
-    // Get form data from request body
+
+    //assign the ''entered value'' in the form to req.body
     const { userName, email, password, role } = req.body;
+
+    //set salt and bcrypt
+    const salt = bcrypt.genSaltSync(10);
+    const hashedPassword = bcrypt.hashSync(password, salt);
+ 
+    //check if username already exisits
+
+    User.findOne({ userName }, (err, userExists) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).send('Server error');
+      }
   
-    // Create a new user with the submitted data
-    const newUser = new User({
+      if (userExists) {
+        return res.status(400).send('Username already taken');
+      }
+  
+      //create a newUser using or User schema and the hashed p
+      const newUser = new User({
         userName,
-      email,
-      password,
-      role // Use the selected role
-    });
+        email,
+        password: hashedPassword,
+        role,
+        createdAt: Date.now(),
+      });
   
-    // Save the user to the database
-    newUser.save()
-      .then(user => {
-        // Redirect to the appropriate page based on the user's role
-        if (user.role === 'admin') {
-          res.redirect('/equipment/new');
+      newUser.save((err, savedUser) => {
+        if (err) {
+          console.error(err);
+          return res.status(500).send('Server error');
+        }
+  
+        //Strech goal different views whether you are an admin or just a visitor (for example you don't have the edit and delete button if you are a visitor)
+        if (savedUser.role === 'admin') {
+          res.redirect('/equipment');
         } else {
           res.redirect('/equipment');
         }
-      })
-      .catch(err => {
-        console.error(err);
-        res.redirect('/signup'); // Show error message or form again
       });
+    });
   });
+
+
+
+//Sign in route
+//GET sign in
+router.get('/signin', (req, res) => {
+    res.render('users/signin.ejs')
+})
+
+//POST sign in
+router.post('/signin', (req, res) => {
+    //we need to ge the user with that username
+    User.findOne({ userName: req.body.userName }, (err, foundUser) => {
+        if (foundUser) {
+
+            //compareSync
+
+            const validLogin = bcrypt.compareSync(req.body.password, foundUser.password)
+
+            if (validLogin) {
+                req.session.currentUser = foundUser
+
+                res.redirect('/equipment')
+            } else {
+                res.send('invalide username or password')
+            }
+
+
+        } else {
+
+            res.send('invalide username or password')
+
+        }
+    })
+})
 
 
 
