@@ -96,7 +96,12 @@ router.post('/signin', (req, res) => {
     })
 })
 
-
+//Signout Route session route
+router.get('/' ,(req, res) => {
+  
+    req.session.destroy()
+    res.redirect('/')
+})
 
 
 
