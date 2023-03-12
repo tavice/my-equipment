@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <form action="/users/signup" method="POST">
+            <div class="form-group">
+                <label for="userName"> Username</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="userName-addon"><i class="fas fa-user"></i></span>
+                    </div>
+                    <input type="text" class="form-control" id="userName" name="userName"
+                        placeholder="Enter your Username" aria-label="userName"
+                        aria-describedby="userName-addon" required>
+                </div>
+            </div>
+    
+       
+    
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="email-addon"><i class="fas fa-envelope"></i></span>
+                    </div>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email"
+                        aria-label="Email address" aria-describedby="email-addon" required>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="password-addon"><i class="fas fa-lock"></i></span>
+                    </div>
+                    <input type="password" class="form-control" id="password" name="password"
+                        placeholder="Enter your password" aria-label="Password" aria-describedby="password-addon"
+                        required>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="confirmPassword-addon"><i class="fas fa-lock"></i></span>
+                    </div>
+                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+                        placeholder="Confirm your password" aria-label="Confirm Password"
+                        aria-describedby="confirmPassword-addon" required>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="role">Role</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="role-addon"><i class="fas fa-user-tag"></i></span>
+                    </div>
+                    <select class="custom-select" id="role" name="role" aria-label="Role"
+                        aria-describedby="role-addon" required>
+                        <option value="">Select your role</option>
+                        <option value="admin">Admin</option>
+                        <option value="visitor">Visitor</option>
+                    </select>
+                </div>
+            </div>
+    
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    
+</body>
+</html>
+
+
+
+
