@@ -47,7 +47,8 @@ h1{
 }
 
   
-
+/*=============================================*/
+/* header.ejs */
 
 /* Nav Bar */
 
@@ -109,11 +110,11 @@ h1{
 
 /* Delete and Update Buttons */
 
-#buttonToModify{
+/* #buttonToModify{
   position: relative;
-  top: 100%;
+  top: 50%;
   
-}
+} */
 
 
   /* Map in the Show Page */
@@ -122,4 +123,15 @@ h1{
     width: 100%;
     height: 50vh;
   }
+
+
+/*=============================================*/
+/* footer.ejs */
+
+  footer {
+    padding: 1px;
+    background-color: 	rgba(255,165,0, 1);
+    width: 100%;
+  }
+  
  

@@ -1,14 +1,14 @@
 {
   "name": "my-equipment",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Fleet Management App for contractor who need to stay on top of their equipment and vehicle inventory",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "tavice",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.0",

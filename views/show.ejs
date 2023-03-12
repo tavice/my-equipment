@@ -77,8 +77,10 @@
 
                                 </ul>
 
+                                
+                                <br>
 
-                                <div class="mt-4 d-flex justify-content-center"  id="buttonToModify">
+                                <div class="mt-4 d-flex"  id="buttonToModify">
                                     <a href="/equipment/" class="mr-3">
                                         <button class="btn btn-info">Back</button>
                                     </a>
@@ -141,7 +143,7 @@
             });
 
             //Code to display date in a MM/DD/YYYY instead of YYYY-MM-DD
-            //console.log('<%= equipment.purchase %>')
+            console.log('<%= equipment.purchase %>')
 
             let dateEquipment = new Date('<%= equipment.purchase %>');
             console.log(dateEquipment)
