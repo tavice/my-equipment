@@ -10,12 +10,12 @@
       <h1 class="text-center mb-5 main-title">List of Equipment and Vehicles</h1>
       <h3>Find your Equipment or Vehicle</h3>
 
-      <input class="form-control" id="myInput" type="text" placeholder="Type Equipment type to find it">
+      <input class="form-control" id="myInput" type="text" placeholder="Enter Equipment Type or Location to find your equipment/vehicle">
       <br>
       <div class="row " id="myDIV">
         <% equipment.forEach(oneEquipment=> { %>
 
-          <div class="col-md-4 mb-4" class="<%= oneEquipment.typeEquipment %>">
+          <div class="col-md-4 mb-4 <%= oneEquipment.typeEquipment %> <%= oneEquipment.location %> <%= oneEquipment.currentUser %>">
 
             <div class="gallery-item" id="equipmentList">
               <a href="/equipment/<%= oneEquipment._id %>">

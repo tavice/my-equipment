@@ -9,7 +9,7 @@
             <div class="container">
 
                 <div class="row gy-4 justify-content-center">
-                    <div class="col-lg-4">
+                    <div class="col-lg-7">
 
 
                         <% if (equipment.typeEquipment==="pick up truck" ){ %>
@@ -35,23 +35,40 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <ul>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Model:</strong> <span>
+                                    <li><i class="bi bi-chevron-double-right"></i> <strong>Model:</strong> <span>
+                                            <!--bootstrap-icons for the chevron-->
                                             <%= equipment.model %>
                                         </span></li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Year of the vehicle:</strong> <span>
+                                    <li><i class="bi bi-chevron-double-right"></i> <strong>Year of the vehicle:</strong>
+                                        <span>
                                             <%= equipment.year %>
                                         </span></li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Purchase Date:</strong> <span>
+                                    <li><i class="bi bi-chevron-double-right"></i> <strong>Purchase Date:</strong>
+                                        <span>
                                             <%= equipment.purchase %>
                                         </span></li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Location:</strong> <span>
+                                    <li><i class="bi bi-chevron-double-right"></i> <strong>Location:</strong> <span>
                                             <%= equipment.location %>
                                         </span></li>
-                                    <li><i class="bi bi-chevron-right"></i> <strong>Current User:</strong> <span>
+                                    <li><i class="bi bi-chevron-double-right"></i> <strong>Current User:</strong> <span>
                                             <%= equipment.currentUser %>
                                         </span></li>
 
                                 </ul>
+
+                                <div class="mt-4 d-flex justify-content-center" id="buttonToModify">
+                                    <a href="/equipment/" class="mr-3">
+                                        <button class="btn btn-info">Back</button>
+                                    </a>
+                                    <a href="/equipment/<%=equipment._id %>/edit" class="mr-3">
+                                        <button class="btn btn-primary update">Update</button>
+                                    </a>
+                                    <form action="/equipment/<%= equipment._id %>?_method=DELETE" method="POST">
+                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                    </form>
+                                   
+                                </div>
+
                             </div>
 
                         </div>
@@ -59,38 +76,54 @@
                     </div>
                 </div>
 
-                <div class="mt-4 d-flex justify-content-center">
-                    <a href="/equipment/<%=equipment._id %>/edit" class="mr-3">
-                        <button class="btn btn-primary update">Update</button>
-                    </a>
-                    <form action="/equipment/<%= equipment._id %>?_method=DELETE" method="POST">
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                    </form>
-                </div>
 
+                <br>
+                <br>
+                <h3> Current Location of the Equipment:</h3>
+                <div id="map" class="<%= equipment.location %>"></div>
+            </div>
 
-            </div> 
-            
         </section>
-<br>
-<br>
 
-        <div id="map"></div>
         
+
+
         <script>
-            let equipmentLocation = {lat: 37.91577775858977 , lng: -122.3563789967407}
+            const locationValue = '<%= equipment.location %>';
+            console.log(locationValue);
+            let equipmentLocation = {};
+        
+            if (locationValue === 'Shop') {
+                equipmentLocation = { lat: 37.91577775858977, lng: -122.3563789967407};
+            } else if (locationValue === 'Jobsite 1 (San Francisco)') {
+                equipmentLocation = { lat: 37.786030895954866, lng: -122.42204451023814 };
+            } else if (locationValue === 'Jobsite 2 (San Jose)') {
+                equipmentLocation = { lat: 37.36768044689819, lng: -121.85537981364354};
+            } else if (locationValue === 'Jobsite 3 (San Rafael)') {
+                equipmentLocation = { lat: 38.00076566458616, lng: -122.52378776051779 };
+            } else {
+                equipmentLocation = { lat: 37.91577775858977, lng: -122.3563789967407};
+            }  
+        
+            const equipmentLocationJSON = JSON.stringify(equipmentLocation);
+        
             let map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 10,
+                zoom: 12,
                 center: equipmentLocation,
             });
-
+        
             let marker = new google.maps.Marker({
                 position: equipmentLocation,
                 map: map,
                 title: "Equipment Location",
             });
         </script>
-
+        
+        
+        
+        
+        
+        
 
         <!-- ============ FOOTER============ -->
         <%- include ('./partials/footer.ejs') %>

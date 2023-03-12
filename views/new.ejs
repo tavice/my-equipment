@@ -36,18 +36,17 @@
                     <label class="form-check-label" for="isDriveable">Check Box if equipment is driveable</label>
                 </div>
                 <div class="form-group">
-                    <label for="currentLocation">Location</label>
-                    <input type="text" class="form-control" id="location"
-                        placeholder="Enter current location of the equipment" name="location">
+                    <label for="location">Location:</label>
+                    <input type="text" class="form-control" id="location" placeholder="Select Equipment Location" name="location"
+                        list="locations-options" required>
+                    <datalist id="locations-options">
+                        <option value="Shop">
+                        <option value="Jobsite 1 (San Francisco)">
+                        <option value="Jobsite 2 (San Jose)">
+                        <option value="Jobsite 3 (San Rafael)">
+                    </datalist>
                 </div>
-                <div class="form-group">
-                    <label for="latitude">Latitude</label>
-                    <input type="text" class="form-control" id="latitude" placeholder="Enter latitude" name="lat">
-                </div>
-                <div class="form-group">
-                    <label for="longitude">Longitude</label>
-                    <input type="text" class="form-control" id="longitude" placeholder="Enter longitude" name="long">
-                </div>
+
                 <div class="form-group">
                     <label for="currentUser">Current user</label>
                     <input type="text" class="form-control" id="currentUser" placeholder="Enter current user name"
@@ -73,6 +72,10 @@
               </div> -->
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+            <br>
+            <a href="/equipment/" class="mr-3">
+                <button class="btn btn-danger">Cancel Equipment Creation</button>
+            </a>
         </div>
 
 

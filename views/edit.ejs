@@ -36,18 +36,24 @@
                     <label class="form-check-label" for="isDriveable" value="<%=equipment.isDriveable%>">Check Box if equipment is driveable</label>
                 </div>
                 <div class="form-group">
-                    <label for="currentLocation">Location</label>
-                    <input type="text" class="form-control" id="location"
-                         name="location" value="<%=equipment.location%>">
+                    <label for="location">Location:</label>
+                    <input type="text" class="form-control" id="location" placeholder="Select Equipment Location" name="location"
+                        list="locations-options" required>
+                    <datalist id="locations-options">
+                        <option value="Shop">
+                        <option value="Jobsite 1 (San Francisco)">
+                        <option value="Jobsite 2 (San Jose)">
+                        <option value="Jobsite 3 (San Rafael)">
+                    </datalist>
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="latitude">Latitude</label>
                     <input type="text" class="form-control" id="latitude" placeholder="Enter latitude" name="location[lat]">
                 </div>
                 <div class="form-group">
                     <label for="longitude">Longitude</label>
                     <input type="text" class="form-control" id="longitude" placeholder="Enter longitude" name="location[long]">
-                </div>
+                </div> -->
                 <div class="form-group">
                     <label for="currentUser">Current user</label>
                     <input type="text" class="form-control" id="currentUser" 
@@ -68,7 +74,12 @@
 
              
                 <button type="submit" class="btn btn-primary">Update</button>
+              
             </form>
+            <br>
+            <a href="/equipment/" class="mr-3">
+                <button class="btn btn-danger">Cancel Update</button>
+            </a>
         </div>
 
 
