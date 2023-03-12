@@ -100,6 +100,8 @@ router.put('/:id', (req, res) => {
     } else {
         req.body.isDriveable = false;
     }
+
+    
  
    Equipment.findByIdAndUpdate(req.params.id, req.body, {new: true,}, (err, updatedEquipment) => {
     

@@ -11,6 +11,7 @@
                 <div class="row gy-4 justify-content-center">
                     <div class="col-lg-7">
 
+                        <!-- Display image depending on the type of equipment-->
 
                         <% if (equipment.typeEquipment==="pick up truck" ){ %>
                             <img src="/uploads/pickup_truck.png" alt="pickup_truck" class="img-fluid">
@@ -31,6 +32,20 @@
                         <h1>
                             <%= equipment.description %>
                         </h1>
+                        <!-- Displaying status in bootstrap strap depending on the status if it is driveable or not-->
+
+                        <div class="mt-4 d-flex ">
+                            <% if(equipment.isDriveable===true){ %>
+                                <h3> <span class="badge badge-success">OPERATIONAL</span></h3>
+                                <% } else { %>
+                                    <h3><span class="badge badge-warning">IN MAINTENANCE</span></h3>
+
+
+                                    <% }%>
+
+
+                        </div>
+                        <br>
 
                         <div class="row">
                             <div class="col-lg-12">
@@ -41,22 +56,29 @@
                                         </span></li>
                                     <li><i class="bi bi-chevron-double-right"></i> <strong>Year of the vehicle:</strong>
                                         <span>
+
                                             <%= equipment.year %>
-                                        </span></li>
-                                    <li><i class="bi bi-chevron-double-right"></i> <strong>Purchase Date:</strong>
+
+                                        </span>
+                                    </li>
+                                    <li><i class="bi bi-chevron-double-right"></i> <strong id="date"> >Purchase Date:</strong>
                                         <span>
-                                            <%= equipment.purchase %>
-                                        </span></li>
+
+                                           
+                                        </span>
+                                    </li>
                                     <li><i class="bi bi-chevron-double-right"></i> <strong>Location:</strong> <span>
-                                            <%= equipment.location %>
-                                        </span></li>
-                                    <li><i class="bi bi-chevron-double-right"></i> <strong>Current User:</strong> <span>
-                                            <%= equipment.currentUser %>
-                                        </span></li>
+                            
+                            <%= equipment.location %>
+                                </span></li>
+                                <li><i class="bi bi-chevron-double-right"></i> <strong>Current User:</strong> <span>
+                                        <%= equipment.currentUser %>
+                                    </span></li>
 
                                 </ul>
 
-                                <div class="mt-4 d-flex justify-content-center" id="buttonToModify">
+
+                                <div class="mt-4 d-flex justify-content-center"  id="buttonToModify">
                                     <a href="/equipment/" class="mr-3">
                                         <button class="btn btn-info">Back</button>
                                     </a>
@@ -66,64 +88,84 @@
                                     <form action="/equipment/<%= equipment._id %>?_method=DELETE" method="POST">
                                         <button type="submit" class="btn btn-danger">Delete</button>
                                     </form>
-                                   
-                                </div>
 
-                            </div>
+                                </div>
 
                         </div>
 
                     </div>
+
                 </div>
+            </div>
 
 
-                <br>
-                <br>
-                <h3> Current Location of the Equipment:</h3>
-                <div id="map" class="<%= equipment.location %>"></div>
+            <br>
+            <br>
+            <h3> Current Location of the Equipment:</h3>
+            <div id="map" class="<%= equipment.location %>"></div>
             </div>
 
         </section>
 
-        
+
 
 
         <script>
+            //Code to display different locations depending on the location - see google dev info for additional info
             const locationValue = '<%= equipment.location %>';
             console.log(locationValue);
             let equipmentLocation = {};
-        
+
             if (locationValue === 'Shop') {
-                equipmentLocation = { lat: 37.91577775858977, lng: -122.3563789967407};
+                equipmentLocation = { lat: 37.91577775858977, lng: -122.3563789967407 };
             } else if (locationValue === 'Jobsite 1 (San Francisco)') {
                 equipmentLocation = { lat: 37.786030895954866, lng: -122.42204451023814 };
             } else if (locationValue === 'Jobsite 2 (San Jose)') {
-                equipmentLocation = { lat: 37.36768044689819, lng: -121.85537981364354};
+                equipmentLocation = { lat: 37.36768044689819, lng: -121.85537981364354 };
             } else if (locationValue === 'Jobsite 3 (San Rafael)') {
                 equipmentLocation = { lat: 38.00076566458616, lng: -122.52378776051779 };
             } else {
-                equipmentLocation = { lat: 37.91577775858977, lng: -122.3563789967407};
-            }  
-        
-            //const equipmentLocationJSON = JSON.stringify(equipmentLocation);
-        
+                equipmentLocation = { lat: 37.91577775858977, lng: -122.3563789967407 };
+            }
+
+
             let map = new google.maps.Map(document.getElementById("map"), {
                 zoom: 12,
                 center: equipmentLocation,
             });
-        
+
             let marker = new google.maps.Marker({
                 position: equipmentLocation,
                 map: map,
                 title: "Equipment Location",
             });
+
+            //Code to display date in a MM/DD/YYYY instead of YYYY-MM-DD
+            //console.log('<%= equipment.purchase %>')
+
+            let dateEquipment = new Date('<%= equipment.purchase %>');
+            console.log(dateEquipment)
+
+            let month = dateEquipment.getMonth() + 1; //it's like an array starts at 0 so need to add 1 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getMonth 
+            if (month < 10) {
+                month = "0" + month;
+            }
+            let day = dateEquipment.getDate() + 1; //similar to month
+            if (day < 10) {
+                day = "0" + day;
+            }
+            let year = dateEquipment.getFullYear();
+            let formattedDate = month + "/" + day + "/" + year;
+
+            document.getElementById("date").innerHTML = 'Purchase Date: ' + formattedDate;
+
         </script>
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
 
         <!-- ============ FOOTER============ -->
         <%- include ('./partials/footer.ejs') %>

@@ -32,13 +32,13 @@
                         name="purchase" value="<%=equipment.purchase%>">
                 </div>
                 <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="isDriveable" name="isDriveable">
-                    <label class="form-check-label" for="isDriveable" value="<%=equipment.isDriveable%>">Check Box if equipment is driveable</label>
+                    <input type="checkbox" class="form-check-input" id="isDriveable" name="isDriveable" >
+                    <label class="form-check-label" for="isDriveable" >Check Box if equipment is driveable</label>
                 </div>
                 <div class="form-group">
                     <label for="location">Location:</label>
                     <input type="text" class="form-control" id="location" placeholder="Select Equipment Location" name="location"
-                        list="locations-options" required>
+                        list="locations-options" value="<%=equipment.location%>" required>
                     <datalist id="locations-options">
                         <option value="Shop">
                         <option value="Jobsite 1 (San Francisco)">
