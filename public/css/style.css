@@ -76,7 +76,7 @@ h1{
     align-items: center;
     justify-content: space-between;
     padding: 10px 0 10px 50px;
-    font-family: var(--font-primary);
+
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 20px;
@@ -93,6 +93,19 @@ h1{
   .navbar .active:focus,
   .navbar li:hover>a {
     color: red;
+  }
+
+  #signOutForm{
+    
+    display: flex;
+    margin-left: 100vh;
+    
+  }
+
+  #signOutButton{
+    text-transform: uppercase;
+    font-size: 20px;
+    color: black;
   }
 
 /*=============================================*/

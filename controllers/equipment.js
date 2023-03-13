@@ -54,13 +54,27 @@ const Equipment = require('../models/equipment.js');
 // 	});
 // });
 
+//custom middleware to require authentication on routes
+const authRequired = (req, res, next) => {
+    console.log(req.session.currentUser)
+    if (req.session.currentUser){
+   
+        next()
+     
+    } else {
+        //if there is no user
+        res.send('you must be logged to see the page')
+        //res.redirect('/')
+    }
+}
+
 
 
 
 
 //Routes - Induces
 //Index
-router.get('/', function (req, res) {
+router.get('/' , authRequired ,function (req, res) {
     Equipment.find({}, function (err, allEquipment) {
         if (err) {
             console.log(err);
@@ -73,12 +87,12 @@ router.get('/', function (req, res) {
 
 
 //New
-router.get('/new', (req, res) => {
+router.get('/new', authRequired , (req, res) => {
     res.render('new.ejs');
 });
 
 //Delete
-router.delete('/:id', (req, res) => {
+router.delete('/:id', authRequired, (req, res) => {
     Equipment.findByIdAndDelete(req.params.id, (err, deletedEquipment) =>{
         if(err){
             console.log(error)
@@ -93,7 +107,7 @@ router.delete('/:id', (req, res) => {
 
 //Update
 
-router.put('/:id', (req, res) => {
+router.put('/:id', authRequired, (req, res) => {
  
     if (req.body.isDriveable === 'on') {
         req.body.isDriveable = true;
@@ -119,7 +133,7 @@ router.put('/:id', (req, res) => {
 //Create
 
 
-router.post('/', (req, res) => {
+router.post('/', authRequired, (req, res) => {
 
 
     if (req.body.isDriveable === 'on') {
@@ -161,7 +175,7 @@ router.post('/', (req, res) => {
 
 //Edit
 
-router.get('/:id/edit',  (req, res)=>{
+router.get('/:id/edit', authRequired, (req, res)=>{
     Equipment.findById(req.params.id, (err, foundEquipment)=>{ 
        if(err){
         console.log(err)
@@ -177,7 +191,7 @@ router.get('/:id/edit',  (req, res)=>{
 
 
 //Show
-router.get('/:id', (req, res) => {
+router.get('/:id', authRequired,(req, res) => {
     Equipment.findById(req.params.id, (err, foundEquipment) => {
         res.render('show.ejs', {
             equipment: foundEquipment
