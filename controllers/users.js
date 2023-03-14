@@ -51,12 +51,7 @@ router.post('/signup', (req, res) => {
           return res.status(500).send('Server error');
         }
   
-        //Strech goal different views whether you are an admin or just a visitor (for example you don't have the edit and delete button if you are a visitor)
-        if (savedUser.role === 'admin') {
-          res.redirect('/equipment');
-        } else {
-          res.redirect('/equipment');
-        }
+        res.redirect('/')
       });
     });
   });
@@ -97,8 +92,8 @@ router.post('/signin', (req, res) => {
 })
 
 //Signout Route session route
-router.get('/' ,(req, res) => {
-  
+router.get('/signout' ,(req, res) => {
+
     req.session.destroy()
     res.redirect('/')
 })

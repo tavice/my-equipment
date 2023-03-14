@@ -79,7 +79,10 @@ router.get('/' , authRequired ,function (req, res) {
         if (err) {
             console.log(err);
         } else {
-            res.render('index.ejs', { equipment: allEquipment });
+            res.render('index.ejs', { 
+                equipment: allEquipment,
+                currentUser: req.session.currentUser 
+             });
         }
     });
 });
@@ -194,7 +197,8 @@ router.get('/:id/edit', authRequired, (req, res)=>{
 router.get('/:id', authRequired,(req, res) => {
     Equipment.findById(req.params.id, (err, foundEquipment) => {
         res.render('show.ejs', {
-            equipment: foundEquipment
+            equipment: foundEquipment,
+            currentUser: req.session.currentUser 
         })
 
     })
