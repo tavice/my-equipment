@@ -31,15 +31,19 @@ h1{
 .gallery-item img:hover {
     transform: scale(1.1);
 }
-.gallery-item i {
+
+#plusSign i {
     max-width: 100%;
     height: auto;
     object-fit: cover;
     border-radius: 5px;
     transition: transform .2s;
+    position: relative;
 }
-.gallery-item i:hover {
-    transform: scale(1.1);
+#plusSign i:hover {
+  transform: scale(1.1);
+  top: 5px;
+  left: 5px;
 }
 
 .gallery-title {
