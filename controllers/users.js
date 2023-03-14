@@ -2,6 +2,7 @@ const express = require('express')
 const bcrypt = require('bcrypt')
 const router = express.Router()
 const User = require('../models/users.js')
+const validator = require('validator'); //https://www.npmjs.com/package/validator 
 
 
 
@@ -20,41 +21,49 @@ router.post('/signup', (req, res) => {
     //assign the ''entered value'' in the form to req.body
     const { userName, email, password, role } = req.body;
 
+    // check if email is a valid email address using validator
+    if (!validator.isEmail(email)) {
+        return res.status(400).send('Invalid email address');
+    }
+
     //set salt and bcrypt
     const salt = bcrypt.genSaltSync(10);
     const hashedPassword = bcrypt.hashSync(password, salt);
- 
+
     //check if username already exisits
 
     User.findOne({ userName }, (err, userExists) => {
-      if (err) {
-        console.error(err);
-        return res.status(500).send('Server error');
-      }
-  
-      if (userExists) {
-        return res.status(400).send('Username already taken');
-      }
-  
-      //create a newUser using or User schema and the hashed p
-      const newUser = new User({
-        userName,
-        email,
-        password: hashedPassword,
-        role,
-        createdAt: Date.now(),
-      });
-  
-      newUser.save((err, savedUser) => {
         if (err) {
-          console.error(err);
-          return res.status(500).send('Server error');
+            console.error(err);
+            return res.status(500).json({ error: 'Server error' });
         }
-  
-        res.redirect('/')
-      });
+
+        if (userExists) {
+            return res.status(400).json({ error: 'Username already taken' });
+        }
+
+        //create a newUser using or User schema and the hashed p
+        const newUser = new User({
+            userName,
+            email,
+            password: hashedPassword,
+            role,
+            createdAt: Date.now(),
+        });
+
+        newUser.save((err, savedUser) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).json({ error: 'Server error' });
+            }
+
+            // Return success response with json
+            console.log(newUser)
+            res.redirect('/users/signin')
+   
+        });
     });
-  });
+});
 
 
 
@@ -92,7 +101,7 @@ router.post('/signin', (req, res) => {
 })
 
 //Signout Route session route
-router.get('/signout' ,(req, res) => {
+router.get('/signout', (req, res) => {
 
     req.session.destroy()
     res.redirect('/')

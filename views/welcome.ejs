@@ -59,10 +59,12 @@
                  -->
 
         <div class="container d-flex flex-column content-center align-items-center">
-            <h2 class="text-center mb-3 main-title">Welcome ! Please Sign in or Sign up if you are a new user !</h2>
+            <h2 class="text-center mb-3 main-title">Welcome ! Please Sign up if you are a new user !</h2>
             <!-- Trigger the modal with a button -->
             <button type="button" class="text-center btn btn-primary btn-lg mb-3" data-toggle="modal" data-target="#signUp">Sign up
             </button>
+
+            <h2 class="text-center mb-3 main-title">Already a user ? Please sign in</h2>
             <button type="button" class="text-center btn btn-info btn-lg" data-toggle="modal" data-target="#signIn">Sign in
             </button>
 
@@ -86,6 +88,7 @@
                                             <span class="input-group-text" id="userName-addon"><i
                                                     class="bi bi-person-circle"></i></span>
                                         </div>
+                                        <div id="'username-message-container'"></div>
                                         <input type="text" class="form-control" id="userName" name="userName"
                                             placeholder="Enter your Username" aria-label="userName"
                                             aria-describedby="userName-addon" required>
@@ -217,6 +220,8 @@
 
         </div>
 
+        
+
 
 
 
@@ -229,6 +234,8 @@
             </div>
             </div>
         </footer>
+
+
 
         <!--Axios to get images-->
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
