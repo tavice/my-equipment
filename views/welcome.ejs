@@ -58,15 +58,15 @@
                 mb-3 class to give a little bit of space between the two buttons
                  -->
 
-        <div class="container d-flex flex-column content-center align-items-center">
+        <div class="container d-flex flex-column  align-items-center">
             <h2 class="text-center mb-3 main-title">Welcome ! Please Sign up if you are a new user !</h2>
             <!-- Trigger the modal with a button -->
             <button type="button" class="text-center btn btn-primary btn-lg mb-3" data-toggle="modal" data-target="#signUp">Sign up
             </button>
 
-            <h2 class="text-center mb-3 main-title">Already a user ? Please sign in</h2>
-            <button type="button" class="text-center btn btn-info btn-lg" data-toggle="modal" data-target="#signIn">Sign in
-            </button>
+            <h4 class="text-center mb-3 main-title">Already a user ?   <button type="button" class="text-center btn btn-link btn-lg" data-toggle="modal" data-target="#signIn">Please Sign in
+            </button></h4>
+         
 
             <!-- Modal Signup-->
             <div class="modal fade" id="signUp" role="dialog">
@@ -226,32 +226,5 @@
 
 
 
-        <footer>
-            <div class="text-center p-4">
-                My Equipment App by:
-                <a class="text-reset fw-bold" href="https://github.com/tavice/my-equipment"> <i
-                        class="bi bi-github"></i> tavice</a>
-            </div>
-            </div>
-        </footer>
-
-
-
-        <!--Axios to get images-->
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
-
-    </body>
-
-</html>
+     <!-- ============ FOOTER============ -->
+     <%- include ('./partials/footer.ejs') %>
