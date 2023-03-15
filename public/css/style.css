@@ -32,18 +32,22 @@ h1{
     transform: scale(1.1);
 }
 
-#plusSign i {
-    max-width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 5px;
-    transition: transform .2s;
-    position: relative;
+.animated-cross:hover #plusSign {
+  animation-name: pulse;
+  animation-duration: 1s;
+ 
 }
-#plusSign i:hover {
-  transform: scale(1.1);
-  top: 5px;
-  left: 5px;
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .gallery-title {
@@ -111,8 +115,8 @@ h1{
 
   #signOutForm{
     
-    display: flex;
-    margin-left: 100vh;
+    /* display: flex; */
+    margin-left: 10%;
     
   }
 

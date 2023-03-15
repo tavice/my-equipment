@@ -58,7 +58,7 @@ router.post('/signup', (req, res) => {
             }
 
             // Return success response with json
-            console.log(newUser)
+           // console.log(newUser)
             res.redirect('/users/signin')
    
         });
