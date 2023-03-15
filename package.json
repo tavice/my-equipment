@@ -1,6 +1,9 @@
 {
   "name": "my-equipment",
   "version": "1.0.0",
+  "engines": {
+    "node": "18.12.1"
+  },
   "description": "A Fleet Management App for contractor who need to stay on top of their equipment and vehicle inventory",
   "main": "server.js",
   "scripts": {

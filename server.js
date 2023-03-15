@@ -23,16 +23,19 @@ app.use(session({
     saveUninitialized: true
 }));
 
+//HEROKU connection
+const MONGODB_URI = process.env.MONGODB_URI;
 
 //mongdb connection
-mongoose.connect(process.env.DATABASE_URL, {
+mongoose.connect(MONGODB_URI , {
 	useNewUrlParser: true,
-	useUnifiedTopology: true, 
+	useUnifiedTopology: true,
+    useFindAndModify: false  
 });
 
 const db = mongoose.connection
 db.on('error', (err)=> console.log(`${err.message} MongoDB Not Running!`));
-db.on('connected', ()=> console.log('mongo connected'));
+db.on('connected', ()=> console.log('mongo connected', MONGODB_URI ));
 db.on('disconnected', ()=> console.log('mongo disconnected'));
 
 
