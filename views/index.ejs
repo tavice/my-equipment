@@ -7,15 +7,17 @@
 
 
     <div class="container">
-      <h1 class="text-center mb-5 main-title">List of Equipment and Vehicles</h1>
+      <h1 class="text-center mb-3 main-title">List of Equipment and Vehicles</h1>
       <h3>Find your Equipment or Vehicle</h3>
 
-      <input class="form-control" id="myInput" type="text" placeholder="Enter Equipment Type or Location to find your equipment/vehicle">
+      <input class="form-control" id="myInput" type="text"
+        placeholder="Enter Equipment Type or Location to find your equipment/vehicle">
       <br>
       <div class="row " id="myDIV">
         <% equipment.forEach(oneEquipment=> { %>
 
-          <div class="col-md-4 mb-4 <%= oneEquipment.typeEquipment %> <%= oneEquipment.location %> <%= oneEquipment.currentUser %>">
+          <div
+            class="col-md-4 mb-4 <%= oneEquipment.typeEquipment %> <%= oneEquipment.location %> <%= oneEquipment.currentUser %>">
 
             <div class="gallery-item" id="equipmentList">
               <a href="/equipment/<%= oneEquipment._id %>">
@@ -32,36 +34,46 @@
                           <% } %>
                             <div class="gallery-title <%= oneEquipment.typeEquipment %>">
                               <%= oneEquipment.description%>
+
+                                <% if(oneEquipment.isDriveable===true){ %>
+                                  <i class="bi bi-check-circle-fill" style="color: green; font-size: x-large;"></i>
+                                  <% } else { %>
+                                    <i class="bi bi-tools" style="color: orange;"></i>
+
+
+                                    <% }%>
                             </div>
               </a>
             </div>
           </div>
           <% }) %>
-          <% if (currentUser && currentUser.role === 'admin') { %>
-          <span class="animated-cross col-md-4 mb-4" style="display:flex; justify-content: center; align-items: center;">
-          <a href="/equipment/new">
-          <i class="bi bi-plus-circle" id="plusSign" style="font-size: 10rem; color: orange; display: flex;"></i>
-        </a>
-      </span>
-      <% } %>
+            <% if (currentUser && currentUser.role==='admin' ) { %>
+              <span class="animated-cross col-md-4 mb-4"
+                style="display:flex; justify-content: center; align-items: center;">
+                <a href="/equipment/new">
+                  <i class="bi bi-plus-circle" id="plusSign"
+                    style="font-size: 10rem; color: orange; display: flex;"></i>
+                </a>
+              </span>
+              <% } %>
       </div>
-      </div>
+    </div>
 
-      <!-- Filter to find equipment faster https://www.w3schools.com/bootstrap/bootstrap_filters.asp-->
-      <script>
-        $(document).ready(function () {
-          $("#myInput").on("keyup", function () {
-            var value = $(this).val().toLowerCase();
-            $(".gallery-title").filter(function () {
-              $(this).parent().toggle($(this).text().toLowerCase().indexOf(value) > -1)
-            });
+    <!-- Filter to find equipment faster https://www.w3schools.com/bootstrap/bootstrap_filters.asp-->
+    <script>
+      $(document).ready(function () {
+        $("#myInput").on("keyup", function () {
+          var value = $(this).val().toLowerCase();
+          $(".gallery-title").filter(function () {
+            $(this).parent().toggle($(this).text().toLowerCase().indexOf(value) > -1)
           });
         });
-      </script>
+      });
+    </script>
 
 
 
 
 
-      <!-- ============ FOOTER============ -->
-      <%- include ('./partials/footer.ejs') %>
+    <!-- ============ FOOTER============ -->
+    <%- include ('./partials/footer.ejs') %>

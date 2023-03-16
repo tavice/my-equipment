@@ -5,7 +5,7 @@
     <%- include ('./partials/header.ejs') %>
 
         <div class="container">
-            <h1 class="text-center mb-5 main-title">Edit Status Of: <%=equipment.description%></h1>
+            <h1 class="text-center mb-3 main-title">Edit Status Of: <%=equipment.description%></h1>
             <form action="/equipment/<%=equipment._id %>?_method=PUT" method="POST">
                 <!-- to use multer Don’t forget the enctype="multipart/form-data" in your form. -->
 
@@ -74,6 +74,7 @@
 
              
                 <button type="submit" class="btn btn-primary">Update</button>
+                
               
             </form>
             <br>

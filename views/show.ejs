@@ -61,54 +61,55 @@
 
                                         </span>
                                     </li>
-                                    <li><i class="bi bi-chevron-double-right"></i> <strong id="date"> >Purchase Date:</strong>
+                                    <li><i class="bi bi-chevron-double-right"></i> <strong id="date"> >Purchase
+                                            Date:</strong>
                                         <span>
 
-                                           
+
                                         </span>
                                     </li>
                                     <li><i class="bi bi-chevron-double-right"></i> <strong>Location:</strong> <span>
-                            
-                            <%= equipment.location %>
-                                </span></li>
-                                <li><i class="bi bi-chevron-double-right"></i> <strong>Current User:</strong> <span>
-                                        <%= equipment.currentUser %>
-                                    </span></li>
+
+                                            <%= equipment.location %>
+                                        </span></li>
+                                    <li><i class="bi bi-chevron-double-right"></i> <strong>Current User:</strong> <span>
+                                            <%= equipment.currentUser %>
+                                        </span></li>
 
                                 </ul>
 
-                                
+
                                 <br>
 
-                                <div class="mt-4 d-flex"  id="buttonToModify">
+                                <div class="mt-4 d-flex" id="buttonToModify">
                                     <a href="/equipment/" class="mr-3">
                                         <button class="btn btn-info">Back</button>
                                     </a>
                                     <!-- Only see these buttons if you are an admin-->
-                                    <% if (currentUser && currentUser.role === 'admin') { %>
-                                    <a href="/equipment/<%=equipment._id %>/edit" class="mr-3">
-                                        <button class="btn btn-primary update">Update</button>
-                                    </a>
-                                    <form action="/equipment/<%= equipment._id %>?_method=DELETE" method="POST">
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </form>
+                                    <% if (currentUser && currentUser.role==='admin' ) { %>
+                                        <a href="/equipment/<%=equipment._id %>/edit" class="mr-3">
+                                            <button class="btn btn-primary update">Update</button>
+                                        </a>
+                                        <form action="/equipment/<%= equipment._id %>?_method=DELETE" method="POST">
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
 
-                                    <% } %>
+                                        <% } %>
 
                                 </div>
+
+                            </div>
 
                         </div>
 
                     </div>
-
                 </div>
-            </div>
 
 
-            <br>
-            <br>
-            <h3> Current Location of the Equipment:</h3>
-            <div id="map" class="<%= equipment.location %>"></div>
+                <br>
+                <br>
+                <h3> Current Location of the Equipment:</h3>
+                <div id="map" class="<%= equipment.location %>"></div>
             </div>
 
         </section>
