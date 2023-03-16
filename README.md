@@ -36,31 +36,29 @@ My first full CRUD web app. I am a general contractor and I got the idea of this
 * Sketches:
 
 <img src="./public/indexsketch.jpg" alt="index sketch"/>
-<img src="./public/indexshowsketch.jpg" alt="Show page sketch"/>
-<img src="./public/newsketch.jg" alt="show sketch"/>
+<img src="./public/showsketch.jpg" alt="Show page sketch"/>
+<img src="./public/newsketch.jpg" alt="show sketch"/>
 
 
 
 ## <a name="design"></a>Design
-* Design elements implemented using Bootsrtap and CSS3
+* Design elements implemented using Bootstrap and CSS3
 
 
 ## <a name="nextsteps"></a>Project Next Steps
-* Users will be able to upload their own iamge
+* Users will be able to upload their own images (Using Multer)
 * Users will be able to manually enter locations in google map
-* Admin user will have access to pricing/budget options
+* Admin user will have access to pricing/budget options and display
 
 
 ## <a name="deployment"></a>Deployed Link
 * [Heroku.com](https://my-equipment.herokuapp.com/)
 
 * You can view the repository:
-[Github.com](https://github.com/Gr8ness21/thekickstandapp)
+[Github.com](https://github.com/tavice/my-equipment)
 
 * If unable to view please go live locally through VS Code
-    
-## Works Cited:
-* N/A
+
 
 
 ## <a name="author"></a>About The Author
