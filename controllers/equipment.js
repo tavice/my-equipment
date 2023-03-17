@@ -97,7 +97,7 @@ router.get('/new', authRequired , (req, res) => {
 
 // pricing table
 
-router.get('/pricing',  (req, res) => {
+router.get('/pricing', authRequired, (req, res) => {
     res.render('pricing.ejs');
 });
 
