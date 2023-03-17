@@ -45,13 +45,25 @@
             <button type="submit" class="btn btn-link" id="signOutButton"> <i class="bi bi-box-arrow-right"></i> Sign Out</button>
           </form>
         </ul>
-    </nav>      
+    </nav>  
+    
+    <h1>Equipment Pricing</h1>
+    <canvas id="myChart"></canvas>
+    <script>
+      // Get the chart data passed from the server
+      const chartData = JSON.stringify(chartData);
+  
+      // Create the chart
+      const ctx = document.getElementById('myChart').getContext('2d');
+      const chart = new Chart(ctx, {
+        type: 'bar',
+        data: chartData
+      });
+    </script>
     
 
 
 
-    <!-- <script type="module" src="dimensions.js"></script> -->
-    <script type="module" src="/js/tableprice.js"></script>
   </body>
 </html>
 
