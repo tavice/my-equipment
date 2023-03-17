@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Equipment = require('../models/equipment.js');
+const Chart = require('chart.js'); //to use chart.js to dislay price
 
 
 
@@ -94,6 +95,12 @@ router.get('/new', authRequired , (req, res) => {
     res.render('new.ejs');
 });
 
+// pricing table
+
+router.get('/pricing',  (req, res) => {
+    res.render('pricing.ejs');
+});
+
 //Delete
 router.delete('/:id', authRequired, (req, res) => {
     Equipment.findByIdAndDelete(req.params.id, (err, deletedEquipment) =>{
@@ -156,7 +163,8 @@ router.post('/', authRequired, (req, res) => {
         lat: req.body.lat,
         long: req.body.long,
         currentUser: req.body.currentUser,
-        typeEquipment: req.body.typeEquipment
+        typeEquipment: req.body.typeEquipment,
+        price: req.body.price,
     };
 
     Equipment.create(newEquipment, (error, createdEquipment) => {

@@ -16,6 +16,11 @@ const equipmentSchema = new mongoose.Schema({
 
     currentUser: { type: String, require: true },
     typeEquipment: { type: String, require: true },
+    price: {
+        type: Number,
+        min: 0,
+      
+      }
 })
 
 
